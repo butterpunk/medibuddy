@@ -77,9 +77,8 @@
 
 <AudioRecorder on:audio-recorded={audioRecorded} />
 
-<box id="form-box" class="box">
+<!-- <box id="form-box" class="box">
 	<h2 class="subtitle"><b>Initial Dr. Dictation:</b></h2>
-	<!-- <input name="audiofile" type="file" bind:recordedAudioBlob /> -->
 	<div class="field">
 		<div class="control">
 			<button on:click={uploadAudio} type="submit" class="button is-success is-fullwidth"
@@ -87,7 +86,7 @@
 			>
 		</div>
 	</div>
-</box>
+</box> -->
 
 <box id="form-box" class="box">
 	<h2 class="subtitle"><b>Initial Dr. Dictation:</b></h2>
@@ -110,7 +109,7 @@
 </box>
 {#if answerInitial != ''}
 	<box class="box">
-		<h2 class="subtitle"><b>Text Response</b></h2>
+		<h2 class="subtitle"><b>Bot Response</b></h2>
 		<p>{answerInitial}</p>
 	</box>
 {/if}

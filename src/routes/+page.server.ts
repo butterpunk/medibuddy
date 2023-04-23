@@ -10,7 +10,7 @@ import fs from 'fs';
 
 const x1 = 'Patient had a significant amount of ceremen in the ear canal. I removed it';
 const x2 = `Is there anything missing from this procedural note that would make it more complete to code:${x1}`;
-const x3 = 'I used a spoon';
+const x3 = 'It was their right ear.';
 const x4 = `combine the original stament: ${x1} with the ammended statement: ${x3} to make a complete original statment`;
 let y1 = '';
 const y3 =
@@ -52,7 +52,8 @@ export const actions: Actions = {
 		});
 		console.log(textResponse);
 		return {
-			response: textResponse.data.choices[0].text
+			response:
+				'The best ICD-10 code for the given procedural note would be 09B - Excision. However, additional information is needed to code it more accurately, such as the specific body part (external auditory canal, middle ear, etc.)'
 		};
 	},
 	submitAddendum: async ({ request }: any) => {
