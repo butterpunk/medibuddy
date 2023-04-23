@@ -27,15 +27,17 @@ export const actions: Actions = {
 		const data = await request.formData();
 		console.log(data);
 		const audioFile = data.get('dataFile');
+		const fileStream = Readable.from(Buffer.from(await audioFile.arrayBuffer()));
+		fileStream.path = 'audio.webm';
 		// console.log(audioFile);
 		// const audioReadStream = Readable.from(audioFile);
 		// audioReadStream.path = 'dictation.wav';
-		fs.writeFileSync('/tmp/dictation.webm', audioFile);
-		const resp = await openai.createTranscription(
-			fs.readFileSync('/tmp/dictation.webm') as any,
-			'whisper-1'
-		);
+		// fs.writeFileSync('/tmp/dictation.webm', audioFile);
+		const resp = await openai.createTranscription(fileStream as unknown as File, 'whisper-1');
 		console.log(resp);
+		return {
+			response: resp.data.text
+		};
 	},
 	submitInitial: async ({ request }: any) => {
 		const configuration = new Configuration({
